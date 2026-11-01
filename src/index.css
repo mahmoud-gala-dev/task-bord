@@ -1,0 +1,419 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Alexandria', 'Aref Ruqaa', 'Katibeh', 'Amiri', 'Lateef', cursive, sans-serif;
+  }
+}
+
+/* Authentic Arabic Handwriting Fonts */
+
+/* 1. خط الرقعة اليدوي الأصيل (Aref Ruqaa) */
+.font-handwriting-ruqaa {
+  font-family: 'Aref Ruqaa', cursive, serif;
+}
+
+/* 2. خط الكتيبة اليدوي المتصل (Katibeh) - شبيه جداً بحركات القلم والطبشور */
+.font-handwriting-katibeh {
+  font-family: 'Katibeh', cursive, serif;
+}
+
+/* 3. خط الرقاص اليدوي الفني (Rakkas) */
+.font-handwriting-rakkas {
+  font-family: 'Rakkas', cursive, serif;
+}
+
+/* 4. خط النسخ والقلم العربي (Amiri) */
+.font-handwriting-amiri {
+  font-family: 'Amiri', serif;
+}
+
+/* 5. خط لطيف السلس المنساب (Lateef) */
+.font-handwriting-lateef {
+  font-family: 'Lateef', cursive, serif;
+}
+
+/* 6. خط مرح السبورة العفوي (Marhey) */
+.font-handwriting-chalk {
+  font-family: 'Marhey', cursive, sans-serif;
+}
+
+/* 7. خط ريم كوفي المخطوط (Reem Kufi) */
+.font-handwriting-kufi {
+  font-family: 'Reem Kufi', sans-serif;
+}
+
+/* 8. خط حديث نقي (Alexandria) */
+.font-modern {
+  font-family: 'Alexandria', sans-serif;
+}
+
+/* Crisp & Vibrant Chalk Glow Effects without Blur Degradation */
+.chalk-glow-white {
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.9), 0 0 3px rgba(255, 255, 255, 0.4);
+}
+
+.chalk-glow-yellow {
+  text-shadow: 0 0 1px rgba(254, 240, 138, 0.9), 0 0 3px rgba(254, 240, 138, 0.4);
+}
+
+.chalk-glow-cyan {
+  text-shadow: 0 0 1px rgba(165, 243, 252, 0.9), 0 0 3px rgba(165, 243, 252, 0.4);
+}
+
+.chalk-glow-mint {
+  text-shadow: 0 0 1px rgba(167, 243, 208, 0.9), 0 0 3px rgba(167, 243, 208, 0.4);
+}
+
+.chalk-glow-pink {
+  text-shadow: 0 0 1px rgba(251, 207, 232, 0.9), 0 0 3px rgba(251, 207, 232, 0.4);
+}
+
+/* Chalk Strikethrough Line */
+.chalk-strikethrough {
+  position: relative;
+}
+.chalk-strikethrough::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -4px;
+  right: -4px;
+  height: 2px;
+  background: currentColor;
+  opacity: 0.85;
+  transform: rotate(-0.5deg);
+  border-radius: 999px;
+  filter: drop-shadow(0 0 2px currentColor);
+  pointer-events: none;
+  animation: chalkDraw 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes chalkDraw {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* Realistic Chalk Dust Erase Animation (Smooth fade out & dissolve) */
+@keyframes chalkEraseFadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0px);
+  }
+  40% {
+    opacity: 0.65;
+    filter: blur(1.5px);
+    transform: scale(0.98) translateY(-2px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.92) translateY(6px);
+    filter: blur(4px);
+  }
+}
+
+.chalk-fade-out {
+  animation: chalkEraseFadeOut 0.38s cubic-bezier(0.2, 0.8, 0.25, 1) forwards !important;
+  pointer-events: none !important;
+}
+
+/* Subtle Chalkboard Dust Surface Layer with Dynamic Panning, Vignette, Chipped Edges & Depth-of-Field */
+.chalk-surface-grain {
+  --pan-x: 0px;
+  --pan-y: 0px;
+  --pan-x-num: 0;
+  --pan-y-num: 0;
+  --pan-dist: 0px;
+  --vignette-opacity: 0.35;
+  --zoom-blur: 0px;
+  --dust-layer-opacity: 1;
+  --grit-layer-opacity: 0.18;
+  position: relative;
+  background-repeat: no-repeat, repeat, repeat, repeat, repeat;
+  background-size: 260% 260%, 320px 240px, 320px 240px, 320px 240px, 320px 240px;
+  background-position: 
+    calc(50% + var(--pan-x-num, 0) * 0.32px) calc(50% + var(--pan-y-num, 0) * 0.32px),
+    calc(var(--pan-x-num, 0) * 0.45px) calc(var(--pan-y-num, 0) * 0.45px),
+    calc(var(--pan-x-num, 0) * 0.45px) calc(var(--pan-y-num, 0) * 0.45px),
+    calc(var(--pan-x-num, 0) * 0.45px) calc(var(--pan-y-num, 0) * 0.45px),
+    calc(var(--pan-x-num, 0) * 0.45px) calc(var(--pan-y-num, 0) * 0.45px);
+  transition: 
+    clip-path 0.3s ease,
+    border 0.3s ease,
+    box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    background-position 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Effect 1: Irregular, physically chipped and worn-away chalkboard edges using CSS clip-path & mask */
+.chalk-surface-grain.effect-chipped-edges {
+  clip-path: polygon(
+    0% 1.2%, 0.8% 0%, 14% 0.2%, 14.8% 0.8%, 15.6% 0.1%, 32% 0%, 32.7% 0.6%, 33.5% 0%, 
+    65% 0.2%, 65.8% 0.8%, 66.5% 0%, 88% 0.1%, 88.7% 0.9%, 89.5% 0%, 99.1% 0%,
+    100% 1.2%, 99.6% 18%, 100% 18.8%, 99.3% 42%, 100% 43.2%, 99.4% 71%, 100% 72.2%, 99.5% 91%, 100% 92%, 99.1% 99.1%,
+    98.7% 100%, 82% 99.6%, 81.2% 100%, 54% 99.3%, 53.2% 100%, 28% 99.7%, 27.2% 99.2%, 26.5% 100%, 1.2% 100%,
+    0% 98.8%, 0.7% 83%, 0% 82.2%, 0.8% 58%, 0% 57%, 0.6% 26%, 0% 25%, 0.9% 9%, 0% 8%
+  );
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cfilter id='edgeChips' x='-5%25' y='-5%25' width='110%25' height='110%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.28' numOctaves='3' result='noise'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='noise' scale='1.7' xChannelSelector='R' yChannelSelector='G'/%3E%3C/filter%3E%3Cmask id='wornMask'%3E%3Crect width='100' height='100' fill='white'/%3E%3Cpath d='M 0.2,15 Q 0.7,16 0.1,17 Z M 0.1,65 Q 0.8,66.5 0.1,68 Z M 99.8,28 Q 99.2,29.5 99.9,31 Z M 99.9,82 Q 99.3,83.5 99.8,85 Z M 22,0.2 Q 23.5,0.7 25,0.1 Z M 74,0.1 Q 75.5,0.8 77,0.2 Z M 35,99.8 Q 36.5,99.2 38,99.9 Z M 80,99.9 Q 81.5,99.3 83,99.8 Z' fill='black'/%3E%3C/mask%3E%3C/defs%3E%3Crect x='0.35' y='0.35' width='99.3' height='99.3' rx='0.4' fill='black' filter='url(%23edgeChips)' mask='url(%23wornMask)'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cfilter id='edgeChips' x='-5%25' y='-5%25' width='110%25' height='110%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.28' numOctaves='3' result='noise'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='noise' scale='1.7' xChannelSelector='R' yChannelSelector='G'/%3E%3C/filter%3E%3Cmask id='wornMask'%3E%3Crect width='100' height='100' fill='white'/%3E%3Cpath d='M 0.2,15 Q 0.7,16 0.1,17 Z M 0.1,65 Q 0.8,66.5 0.1,68 Z M 99.8,28 Q 99.2,29.5 99.9,31 Z M 99.9,82 Q 99.3,83.5 99.8,85 Z M 22,0.2 Q 23.5,0.7 25,0.1 Z M 74,0.1 Q 75.5,0.8 77,0.2 Z M 35,99.8 Q 36.5,99.2 38,99.9 Z M 80,99.9 Q 81.5,99.3 83,99.8 Z' fill='black'/%3E%3C/mask%3E%3C/defs%3E%3Crect x='0.35' y='0.35' width='99.3' height='99.3' rx='0.4' fill='black' filter='url(%23edgeChips)' mask='url(%23wornMask)'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+/* Effect 2: Irregular hand-drawn chalk border framing the entire viewport */
+.chalk-surface-grain.effect-chalk-border {
+  border: 7px solid transparent;
+  border-image: repeating-conic-gradient(
+    from 15deg at 50% 50%,
+    rgba(255, 255, 255, 0.75) 0deg 1.4deg,
+    rgba(255, 255, 255, 0.28) 1.4deg 2.8deg,
+    transparent 2.8deg 4deg,
+    rgba(255, 255, 255, 0.85) 4deg 5.8deg,
+    rgba(255, 255, 255, 0.18) 5.8deg 7.4deg,
+    transparent 7.4deg 9deg,
+    rgba(255, 255, 255, 0.68) 9deg 10.8deg,
+    transparent 10.8deg 13deg
+  ) 24 / 7px stretch;
+}
+
+/* Effect 3: Dynamic Inset Box-Shadow Vignette simulating physical chalkboard frame edge shadow */
+.chalk-surface-grain.effect-frame-vignette {
+  box-shadow: 
+    inset calc(var(--pan-x-num, 0) * -0.06px) calc(var(--pan-y-num, 0) * -0.06px) calc(90px + var(--pan-dist, 0px) * 0.08) rgba(0, 0, 0, var(--vignette-opacity, 0.45)),
+    inset 0 0 calc(130px + var(--pan-dist, 0px) * 0.12) rgba(0, 0, 0, calc(var(--vignette-opacity, 0.45) * 0.85)),
+    inset 0 0 calc(240px + var(--pan-dist, 0px) * 0.18) rgba(0, 0, 0, calc(var(--vignette-opacity, 0.45) * 0.5));
+}
+
+/* Layer for Free Chalk Dust Sweeps & Depth-of-Field Blur on Zoom */
+.chalk-surface-grain::before {
+  content: '';
+  position: fixed;
+  inset: -60px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: var(--dust-layer-opacity, 1);
+  filter: blur(var(--zoom-blur, 0px));
+  transition: 
+    filter 0.3s ease-out, 
+    opacity 0.3s ease, 
+    background-position 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  background-image: 
+    /* Primary sweeping dusty linear gradient across the large chalkboard slate */
+    linear-gradient(
+      calc(135deg + (var(--pan-x-num, 0) * 0.015deg)),
+      rgba(255, 255, 255, 0.045) 0%,
+      rgba(255, 255, 255, 0.012) 22%,
+      rgba(0, 0, 0, 0.12) 48%,
+      rgba(255, 255, 255, 0.038) 74%,
+      rgba(0, 0, 0, 0.16) 100%
+    ),
+    /* Counter-diagonal chalk dust wipe streaks */
+    linear-gradient(
+      calc(45deg + (var(--pan-y-num, 0) * 0.012deg)),
+      rgba(255, 255, 255, 0.03) 0%,
+      transparent 35%,
+      rgba(255, 255, 255, 0.018) 60%,
+      rgba(0, 0, 0, 0.1) 100%
+    ),
+    /* Micro chalk dust specks */
+    radial-gradient(1px 1px at 20px 30px, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0)),
+    radial-gradient(1px 1px at 40px 70px, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0)),
+    radial-gradient(1.5px 1.5px at 90px 40px, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0)),
+    radial-gradient(1px 1px at 160px 120px, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0));
+  background-repeat: no-repeat, no-repeat, repeat, repeat, repeat, repeat;
+  background-size: 260% 260%, 200% 200%, 320px 240px, 320px 240px, 320px 240px, 320px 240px;
+  background-position: 
+    calc(50% + var(--pan-x-num, 0) * 0.32px) calc(50% + var(--pan-y-num, 0) * 0.32px),
+    calc(50% + var(--pan-x-num, 0) * 0.18px) calc(50% + var(--pan-y-num, 0) * 0.18px),
+    calc(var(--pan-x-num, 0) * 0.45px) calc(var(--pan-y-num, 0) * 0.45px),
+    calc(var(--pan-x-num, 0) * 0.45px) calc(var(--pan-y-num, 0) * 0.45px),
+    calc(var(--pan-x-num, 0) * 0.45px) calc(var(--pan-y-num, 0) * 0.45px),
+    calc(var(--pan-x-num, 0) * 0.45px) calc(var(--pan-y-num, 0) * 0.45px);
+}
+
+/* Layer for SVG Slate Grit Noise & Depth-of-Field Blur on Zoom */
+.chalk-surface-grain::after {
+  content: '';
+  position: fixed;
+  inset: -40px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: var(--grit-layer-opacity, 0.18);
+  filter: blur(var(--zoom-blur, 0px));
+  mix-blend-mode: overlay;
+  transition: 
+    filter 0.3s ease-out, 
+    opacity 0.3s ease, 
+    background-position 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='chalkGrit'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.95 0 0 0 0 0.95 0 0 0 0 0.95 0 0 0 0.7 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23chalkGrit)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+  background-position: calc(var(--pan-x-num, 0) * 0.15px) calc(var(--pan-y-num, 0) * 0.15px);
+}
+
+/* Subtle Chalk Smudge Texture */
+.chalk-smudge {
+  background: radial-gradient(circle at 80% 25%, rgba(255, 255, 255, 0.03) 0%, transparent 65%),
+              radial-gradient(circle at 20% 75%, rgba(255, 255, 255, 0.025) 0%, transparent 55%),
+              radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.015) 0%, transparent 70%);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ========================================================
+   XMind Chalk Mind Map Handwriting Boxes & Branches Styles
+   أنماط خريطة XMind المبسطة - البوكس يشبه الكتابة والخط اليدوي
+   ======================================================== */
+
+/* Base XMind Chalk Node Box */
+.chalk-xmind-node-box {
+  position: relative;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  cursor: pointer;
+}
+
+.chalk-xmind-node-box:hover {
+  filter: brightness(1.12);
+  transform: translateY(-1px) scale(1.015);
+}
+
+.chalk-xmind-node-box.selected {
+  outline: none;
+  filter: brightness(1.22);
+  box-shadow: 0 0 14px currentColor, inset 0 0 8px currentColor;
+}
+
+/* Style 1: Hand-Sketched Chalk Frame (بوكس إطار طبشوري مرسوم باليد) */
+.chalk-box-sketch {
+  border-radius: 255px 18px 225px 15px/15px 225px 18px 255px;
+  border: 2px dashed currentColor;
+  background: rgba(0, 0, 0, 0.45);
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.6), 
+    inset 0 0 10px rgba(0, 0, 0, 0.4),
+    0 0 4px currentColor;
+  padding: 8px 16px;
+}
+
+/* Style 2: Chalk Underline Handwriting (بوكس خط تحتي طبشوري مائل يشبه الكتابة المباشرة) */
+.chalk-box-underline {
+  border-radius: 4px;
+  border-bottom: 2.5px solid currentColor;
+  background: rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.5);
+  padding: 6px 12px;
+  position: relative;
+}
+
+.chalk-box-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 10%;
+  right: 15%;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
+  border-radius: 999px;
+  filter: drop-shadow(0 0 1px currentColor);
+}
+
+/* Style 3: Handwritten Chalk Brackets [ نص الفكرة ] (أقواس طبشورية جانبية) */
+.chalk-box-bracket {
+  border-radius: 6px;
+  border-right: 3px solid currentColor;
+  border-left: 3px solid currentColor;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 6px 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.chalk-box-bracket::before,
+.chalk-box-bracket::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 2px;
+  background: currentColor;
+}
+.chalk-box-bracket::before {
+  top: 0;
+  right: 0;
+  border-top-right-radius: 2px;
+}
+.chalk-box-bracket::after {
+  bottom: 0;
+  right: 0;
+  border-bottom-right-radius: 2px;
+}
+
+/* Style 4: Organic Chalk Cloud (سحابة أفكار طبشورية عضوية) */
+.chalk-box-cloud {
+  border-radius: 36px 16px 32px 14px;
+  border: 2px dotted currentColor;
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), inset 0 0 8px rgba(255, 255, 255, 0.05);
+  padding: 8px 18px;
+}
+
+/* Central Root Node Specially Styled (الموضوع الرئيسي للخريطة) */
+.chalk-xmind-root-box {
+  border-radius: 265px 22px 245px 18px/18px 245px 22px 265px;
+  border: 2.5px solid currentColor;
+  background: rgba(0, 0, 0, 0.65);
+  box-shadow: 
+    0 0 22px currentColor, 
+    inset 0 0 16px rgba(0, 0, 0, 0.7),
+    0 8px 24px rgba(0, 0, 0, 0.8);
+  padding: 12px 24px;
+}
+
+/* Chalk Hand-drawn Checkbox for tasks inside XMind */
+.chalk-xmind-checkbox {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 1.8px solid currentColor;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.chalk-xmind-checkbox:hover {
+  transform: scale(1.15);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Chalk branch SVG curved lines */
+.chalk-xmind-path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke 0.3s ease, opacity 0.3s ease;
+}
+
